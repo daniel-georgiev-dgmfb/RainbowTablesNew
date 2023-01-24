@@ -15,7 +15,7 @@ namespace RainbowTables
         {
             var stopwatch = new Stopwatch();
             Console.WriteLine("Hello World!");
-            RainbowTableGenerator.RunSync(args[0].ToCharArray());
+            SyncRainbowTableGenerator.Run(args[0].ToCharArray());
             Console.ReadLine();
         }
 
