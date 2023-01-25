@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 internal class AsyncRainbowTableGenerator
 {
@@ -15,6 +17,7 @@ internal class AsyncRainbowTableGenerator
         //var md5 = MD5.Create();
         var exceptionCount = 0;
         ulong total = 0;
+        
         stopwatch.Start();
         //try
         //{
