@@ -13,8 +13,9 @@ namespace RainbowTables
     {
         static async Task Main(string[] args)
         {
-            var stopwatch = new Stopwatch();
+            //var stopwatch = new Stopwatch();
             SyncRainbowTableGenerator.Run(args[0].ToCharArray());
+            //await AsyncRainbowTableGenerator.Run(args[0].ToCharArray());
             Console.ReadLine();
         }
 
