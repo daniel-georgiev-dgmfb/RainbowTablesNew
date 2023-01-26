@@ -14,11 +14,10 @@ namespace RainbowTables
     {
         public static void Run(char[] source)
         {
-            Stopwatch stopwatch = new Stopwatch();
+            var stopwatch = new Stopwatch();
             var l = new List<string>();
             var perm = new List<string>();
             var salt = new byte[4];
-            //var sb = new StringBuilder();
             var md5 = MD5.Create();
             var exceptionCount = 0;
             ulong total = 0;
