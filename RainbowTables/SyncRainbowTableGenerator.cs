@@ -2,11 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace RainbowTables
 {
@@ -21,6 +18,10 @@ namespace RainbowTables
             var md5 = MD5.Create();
             var exceptionCount = 0;
             ulong total = 0;
+            byte batchCount = 0;
+            byte batchCountDisplay = 0;
+            TimeSpan batchIntervalTimeStamp = TimeSpan.FromSeconds(0);
+
             stopwatch.Start();
             try
             {
@@ -49,9 +50,16 @@ namespace RainbowTables
                                                         var d = new char[9] { source[i], source[i1], source[i2], source[i3], source[i4], source[i5], source[i6], source[i7], source[i8] };
                                                         sb.Clear();
                                                         var str = new string(d);
-                                                        var hash = HashBase.HashPassword(md5, str, out salt);                                                 
+
+                                                        var hash = HashBase.HashPassword(md5, str, out salt);
                                                         var base64 = System.Convert.ToBase64String(hash);
-                                                        Debug.WriteLine("psw: " + str + " hash: " + base64 + ". Total:" + ++total + " time elapsed: " + stopwatch.Elapsed);
+                                                        //to do work out rate per sec.
+                                                        //if (stopwatch.Elapsed.Subtract(batchIntervalTimeStamp).Seconds > 10)
+                                                        //{
+                                                        //    batchIntervalTimeStamp = stopwatch.Elapsed;
+                                                        //}
+                                                        //Debug.WriteLine("psw: {0} hash:{1}. Total:{2}. Time elapsed: {3}. Rate per sec: {4}", str, base64, ++total, stopwatch.Elapsed, batchCount);
+                                                        //Debug.WriteLine("psw: " + str + " hash: " + base64 + ". Total:" + ++total + " time elapsed: " + stopwatch.Elapsed);
                                                     }
                                                     catch (Exception e)
                                                     {
