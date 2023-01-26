@@ -49,23 +49,19 @@ namespace RainbowTables
 
                                                         var d = new char[9] { source[i], source[i1], source[i2], source[i3], source[i4], source[i5], source[i6], source[i7], source[i8] };
                                                         sb.Clear();
-                                                        //var d = new char[4] { source[i], source[i1], source[i2], source[i3] };
                                                         var str = new string(d);
-                                                        //sb.AppendLine(str);
-                                                        //var p = new string(d);
-                                                        //perm.Add(sb.ToString());
-                                                        var hash = HashBase.HashPassword(md5, str, out salt);
-                                                        //var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+                                                        var hash = HashBase.HashPassword(md5, str, out salt);                                                 
                                                         var base64 = System.Convert.ToBase64String(hash);
-                                                        //sb.AppendFormat("psw - {0} - hash - {1}. Elapsed time: {2}. Generated: {3}", str, base64, stopwatch.Elapsed, Interlocked.Increment(ref total));
-                                                        Debug.WriteLine("psw: " + str + " hash: " + base64 + ". Total:" + Interlocked.Increment(ref total) + " time elapsed: " + stopwatch.Elapsed);
-                                                        //Debug.WriteLine(sb.ToString());
-                                                        //ConsoleOutput.Instance.WriteLine(sb.ToString(), OutputLevel.Information);
+                                                        Debug.WriteLine("psw: " + str + " hash: " + base64 + ". Total:" + ++total + " time elapsed: " + stopwatch.Elapsed);
                                                     }
                                                     catch (Exception e)
                                                     {
                                                         ++exceptionCount;
+#if DEBUG
+                                                        Debug.WriteLine("{0} - {1}. Exceptions:{2}", e.Message, total, exceptionCount);
+#else
                                                         Console.WriteLine("{0} - {1}. Exceptions:{2}", e.Message, total, exceptionCount);
+#endif
                                                     }
                                                 };
                                             };
