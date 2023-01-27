@@ -54,11 +54,15 @@ namespace RainbowTables
                                                         var hash = HashBase.HashPassword(md5, str, out salt);
                                                         var base64 = System.Convert.ToBase64String(hash);
                                                         //to do work out rate per sec.
-                                                        //if (stopwatch.Elapsed.Subtract(batchIntervalTimeStamp).Seconds > 10)
-                                                        //{
-                                                        //    batchIntervalTimeStamp = stopwatch.Elapsed;
-                                                        //}
-                                                        //Debug.WriteLine("psw: {0} hash:{1}. Total:{2}. Time elapsed: {3}. Rate per sec: {4}", str, base64, ++total, stopwatch.Elapsed, batchCount);
+                                                        if (stopwatch.Elapsed.Subtract(batchIntervalTimeStamp).Seconds > 10)
+                                                        {
+                                                            batchIntervalTimeStamp = stopwatch.Elapsed;
+                                                            batchCountDisplay = batchCount;
+                                                            batchCount= 0;
+                                                            
+                                                        }
+                                                        ++batchCount;
+                                                        Debug.WriteLine("psw: {0} hash:{1}. Total:{2}. Time elapsed: {3}. Rate per sec: {4}", str, base64, ++total, stopwatch.Elapsed, batchCountDisplay);
                                                         //Debug.WriteLine("psw: " + str + " hash: " + base64 + ". Total:" + ++total + " time elapsed: " + stopwatch.Elapsed);
                                                     }
                                                     catch (Exception e)

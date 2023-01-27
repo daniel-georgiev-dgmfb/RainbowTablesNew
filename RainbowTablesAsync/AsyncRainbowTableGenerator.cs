@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using Kernel.Cryptography;
 
 internal class AsyncRainbowTableGenerator
 {
@@ -41,7 +43,7 @@ internal class AsyncRainbowTableGenerator
                                             {
                                                 try
                                                 {
-                                                    var sb = new StringBuilder();
+                                                    //var sb = new StringBuilder();
 
                                                     var d = new char[9] { source[i], source[i1], source[i2], source[i3], source[i4], source[i5], source[i6], source[i7], source[i8] };
                                                     sb.Clear();
@@ -58,7 +60,7 @@ internal class AsyncRainbowTableGenerator
                                                     //Debug.WriteLine(sb.ToString());
                                                     //ConsoleOutput.Instance.WriteLine(sb.ToString(), OutputLevel.Information);
                                                 }
-                                                catch (ex Exception)
+                                                catch (e Exception)
                                                 {
                                                     ++exceptionCount;
                                                     Console.WriteLine("{0} - {1}. Exceptions:{2}", e.Message, total, exceptionCount);
