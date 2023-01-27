@@ -6,7 +6,7 @@ using Kernel.Cryptography;
 
 internal class AsyncRainbowTableGenerator
 {
-    public static void Run(char[] source)
+    public static async Task Run(char[] source)
     {
         var l = new List<string>();
         var perm = new List<string>();
