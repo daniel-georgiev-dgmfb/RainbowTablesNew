@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Platform.Kernel.Cryptography">
       <HintPath>..\..\daniel-georgiev-dgmfb\kernel\Platform.Kernel.Cryptography\bin\Debug\net6.0\Platform.Kernel.Cryptography.dll</HintPath>
     </Reference>
