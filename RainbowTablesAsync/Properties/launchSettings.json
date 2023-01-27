@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RainbowTablesAsync": {
+      "commandName": "Project",
+      "commandLineArgs": "abc123"
+    }
+  }
+}

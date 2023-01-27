@@ -20,7 +20,7 @@ internal class AsyncRainbowTableGenerator
         var exceptionCount = 0;
         ulong total = 0;
         
-        stopwatch.Start();
+        //stopwatch.Start();
         //try
         //{
         //    Parallel.For(0, source.Length, i =>
