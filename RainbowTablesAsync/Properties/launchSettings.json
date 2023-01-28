@@ -2,7 +2,7 @@
   "profiles": {
     "RainbowTablesAsync": {
       "commandName": "Project",
-      "commandLineArgs": "abc123"
+      "commandLineArgs": "QWERTYUIOP[]ASDFGHJKL;'#/.,MNBVCXZ\\1234567890`¬1234567890"
     }
   }
 }
