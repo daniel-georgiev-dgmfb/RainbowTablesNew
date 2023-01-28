@@ -33,33 +33,36 @@ internal class AsyncRainbowTableGenerator
                                 {
                                     Parallel.For(0, source.Length, i7 =>
                                     {
-                                        try
+                                        Parallel.For(0, source.Length, i8 =>
                                         {
-                                            var sb = new StringBuilder();
+                                            try
+                                            {
+                                                var sb = new StringBuilder();
 
-                                            var psw = new char[8] { source[i], source[i1], source[i2], source[i3], source[i4], source[i5], source[i6], source[i7] };
-                                            var str = new string(psw);
-                                            var hash = new Platform.Kernel.Cryptography.Md4Hash().ComputeHash(str);
-                                            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(hash);
-                                            var base64 = System.Convert.ToBase64String(plainTextBytes);
-                                            sb.AppendFormat("psw - {0} - hash - {1}. Elapsed time: {2}. Generated: {3}", str, base64, stopwatch.Elapsed, Interlocked.Increment(ref total));
+                                                var psw = new char[9] { source[i], source[i1], source[i2], source[i3], source[i4], source[i5], source[i6], source[i7], source[i8] };
+                                                var str = new string(psw);
+                                                var hash = new Platform.Kernel.Cryptography.Md4Hash().ComputeHash(str);
+                                                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(hash);
+                                                var base64 = System.Convert.ToBase64String(plainTextBytes);
+                                                sb.AppendFormat("psw - {0} - hash - {1}. Elapsed time: {2}. Generated: {3}", str, base64, stopwatch.Elapsed, Interlocked.Increment(ref total));
 #if DEBUG
-                                            Debug.WriteLine(sb.ToString());
+                                                Debug.WriteLine(sb.ToString());
 #else
                                             Console.WriteLine(sb.ToString());
 #endif
-                                        }
+                                            }
 
-                                        catch (Exception ex)
-                                        {
-                                            ++exceptionCount;
+                                            catch (Exception ex)
+                                            {
+                                                ++exceptionCount;
 #if DEBUG
-                                            Debug.WriteLine("{0} - {1}. Exceptions:{2}", ex.Message, total, exceptionCount);
+                                                Debug.WriteLine("{0} - {1}. Exceptions:{2}", ex.Message, total, exceptionCount);
 #else
                                             Console.WriteLine("{0} - {1}. Exceptions:{2}", ex.Message, total, exceptionCount);
 #endif
 
-                                        }
+                                            }
+                                        });
                                     });
                                 });
                             });
