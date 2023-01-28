@@ -19,7 +19,6 @@ namespace RainbowTables
             var exceptionCount = 0;
             ulong total = 0;
             ulong subTotal = 0;
-            //byte batchCount = 0;
             ulong batchCountDisplay = 0;
             TimeSpan batchIntervalTimeStamp = TimeSpan.FromSeconds(0);
 
@@ -59,15 +58,13 @@ namespace RainbowTables
                                                         if (stopwatch.Elapsed.Subtract(batchIntervalTimeStamp).Seconds > 10)
                                                         {
                                                             batchIntervalTimeStamp = stopwatch.Elapsed;
-                                                            //batchCountDisplay = (byte)(batchCount / (byte)10);
+                                                            
                                                             batchCountDisplay = (total - subTotal) / 10;
-                                                            //batchCount = 0;
+                                                            
                                                             subTotal = total;
                                                         }
-                                                        //++batchCount;
                                                         
                                                         Debug.WriteLine("psw: {0} hash:{1}. Total:{2}. Time elapsed: {3}. Rate per sec: {4}", str, base64, total, stopwatch.Elapsed, batchCountDisplay);
-                                                        //Debug.WriteLine("psw: " + str + " hash: " + base64 + ". Total:" + ++total + " time elapsed: " + stopwatch.Elapsed);
                                                     }
                                                     catch (Exception e)
                                                     {
